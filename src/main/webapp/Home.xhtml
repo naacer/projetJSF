@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML
+        xmlns = "http://www.w3.org/1999/xhtml"
+        xmlns:h = "http://java.sun.com/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+        >
+
+<f:view>
+    <head>
+        <f:facet name="no-fa">true</f:facet>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    </head>
+    <h:body>
+
+
+        <div class="container text-center " style="margin-top:15%; border-radius:100px; ">
+            <table class="table table-primary" style="border-radius:100px;  ">
+                <thead>
+
+                <tr style="border: none;">
+
+                    <th scope="col" style="border: none;">Name</th>
+                    <th scope="col" style="border: none;">Departement</th>
+                    <th scope="col" style="border: none;">Date</th>
+                    <th scope="col" style="border: none;">Action</th>
+                </tr>
+                </thead>
+                <tbody style=" background-color: rgb(200,100,100,1); border-radius:100px; ">
+
+                <ui:repeat var="row" value="#{myBean.dataList}">
+                <tr class="table-secondary" style="border-radius: 100px;">
+
+                    <td style=" background-color: transparent" ><h:inputText id="name" value="#{myBean.id} "   /></td>
+                    <td style=" background-color: transparent" ><h:inputText  value="#{myBean.name}"   /></td>
+                    <td  style="background-color: transparent"><h:inputText value="#{myBean.dep}"/> </td>
+                    <td  style="background-color: transparent" ><h:inputText value="#{myBean.date}"/></td>
+                    <td style="background-color: transparent ;" ><div class="container text-center" style="width: 50%;" ><div class="row"><div class="col-6">
+
+                    #{myBean.name}
+                        #{myBean.date}
+                        #{myBean.dep}
+                        <h:form  >
+
+                            <h:commandButton action="#{myBean.delet(row['ID'])}" value="supprimer"/>
+
+                        </h:form>
+
+
+
+                    </div>
+
+                        <div class="col-6">
+
+
+                            <h:form>
+                                <h:commandButton action="#{myBean.update()}" value="modifier"/>
+                            </h:form>
+
+                        </div>
+                        <div>
+                        <h:form>
+                            <h:commandButton action="#{myBean.addUser()}" value="Add" />
+                        </h:form>
+                        </div>
+                    </div>
+                    </div>
+                    </td>
+
+                </tr>
+                </ui:repeat>
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+
+
+    </h:body>
+</f:view>
+</HTML>
